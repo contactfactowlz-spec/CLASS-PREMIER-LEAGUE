@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Class Premier League (CPL)</title>
+
+  <!-- Link to external stylesheet (create style.css next) -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Minimal fallback styles so page looks okay before style.css is added */
+    :root {
+      --bg1: #021126;
+      --bg2: #0b3d91;
+      --card: rgba(255,255,255,0.06);
+      --accent: #ffb400;
+    }
+    html,body {
+      height:100%;
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(120deg,var(--bg1),var(--bg2));
+      color: #fff;
+      -webkit-font-smoothing:antialiased;
+    }
+    .wrap {
+      max-width:800px;
+      margin:12px auto;
+      padding:16px;
+    }
+    header {
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    h1 {
+      font-size:20px;
+      margin:0;
+      color:var(--accent);
+      text-shadow:0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .top-row {
+      display:flex;
+      gap:8px;
+      margin-top:12px;
+    }
+    .btn {
+      flex:1;
+      padding:10px;
+      border-radius:10px;
+      background:var(--card);
+      border:1px solid rgba(255,255,255,0.06);
+      font-weight:600;
+      color:#fff;
+      font-size:14px;
+      text-align:center;
+    }
+    .hero {
+      margin-top:16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+      padding:14px;
+      border-radius:12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    }
+    .status {
+      text-align:left;
+      font-size:14px;
+      line-height:1.4;
+    }
+    .big {
+      font-size:18px;
+      font-weight:700;
+      margin-top:8px;
+      color:var(--accent);
+    }
+    footer {
+      margin-top:18px;
+      font-size:12px;
+      color:rgba(255,255,255,0.6);
+      text-align:center;
+    }
+
+    /* Mobile friendly */
+    @media(min-width:600px){
+      h1{font-size:24px}
+      .wrap{padding:20px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img src="https://raw.githubusercontent.com/github/explore/main/topics/cricket/cricket.png" alt="logo" width="44" height="44" style="border-radius:8px;background:#fff"/>
+      <div>
+        <h1>CLASS PREMIER LEAGUE</h1>
+        <div style="font-size:12px;color:rgba(255,255,255,0.7)">Mobile first • 5-over matches • Auction • Retention</div>
+      </div>
+    </header>
+
+    <div class="top-row" style="margin-top:14px;">
+      <button class="btn" id="btn-auction" onclick="openAuction()">Auction</button>
+      <button class="btn" id="btn-schedule" onclick="openSchedule()">Schedule</button>
+      <button class="btn" id="btn-play" onclick="openMatch()">Play</button>
+    </div>
+
+    <div class="hero" id="main-hero" role="region" aria-live="polite">
+      <div class="status">
+        <div class="big" id="main-title">Welcome — Tap Play to simulate a match</div>
+        <div style="margin-top:10px" id="sub-status">Tournament: League Stage • Teams: 6 • Budget: ₹150cr each</div>
+
+        <div style="margin-top:12px">
+          <div id="scoreboard" style="background:rgba(0,0,0,0.15);padding:10px;border-radius:8px;">
+            <div id="live-status">No active match</div>
+            <div id="scoreline" style="margin-top:8px;font-weight:600">Score: —</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button class="btn" style="flex:1" onclick="startToss()">Toss</button>
+          <button class="btn" style="flex:1" onclick="playOver()">Play Over</button>
+        </div>
+
+        <p id="log" style="margin-top:10px;font-size:13px;color:rgba(255,255,255,0.85)">Log: —</p>
+      </div>
+    </div>
+
+    <footer>
+      Created for Class Premier League • Follow the guided steps to add style.css and script.js files.
+    </footer>
+  </div>
+
+  <!-- Placeholder minimal logic so page won't error if external scripts are missing -->
+  <script>
+    // lightweight stubs — real game logic will live in script.js (upload next)
+    function openAuction(){ alert('Auction: create auction screen by uploading script.js and style.css next.'); }
+    function openSchedule(){ alert('Schedule: will show generated fixture after you upload script.js.'); }
+    function openMatch(){ document.getElementById('main-title').innerText = 'Match screen (ready)'; }
+    function startToss(){
+      const toss = Math.random() < 0.5 ? 'Team A wins toss' : 'Team B wins toss';
+      document.getElementById('live-status').innerText = toss;
+      appendLog(`Toss: ${toss}`);
+    }
+    function playOver(){
+      appendLog('Play Over clicked — upload script.js to enable full match simulation.');
+    }
+    function appendLog(text){
+      const el = document.getElementById('log');
+      const now = new Date().toLocaleTimeString();
+      el.innerText = `${now} — ${text}\n` + el.innerText;
+    }
+  </script>
+
+  <!-- Link to main game script (we'll create this file next: script.js) -->
+  <script src="script.js" defer></script>
+  <!-- Retention logic file will be retention.js (create later) -->
+  <script src="retention.js" defer></script>
+</body>
+</html>
